@@ -1,0 +1,71 @@
+> #library(ahp)
+> ahpFile <- system.file("extdata/custom", "laptopy.ahp", package="ahp")
+> ahpFile <- "C:/Users/Izuœ/Desktop/jezyk R/lab4/lab4/laptopy1.ahp"
+> laptopyAhp <- Load(ahpFile)
+> Calculate(laptopyAhp)
+> print(laptopyAhp, priority = function(x) x$sparent$priority["total", x$name])
+                     levelName priority
+1  Zakup laptopa                     NA
+2   ¦--Wydajnosc                     NA
+3   ¦   ¦--Apple i5-5360U            NA
+4   ¦   ¦--Apple i5-7360U            NA
+5   ¦   ¦--Apple M-series77Y32       NA
+6   ¦   ¦--Apple i5-7267U            NA
+7   ¦   ¦--Apple i5-7267U2           NA
+8   ¦   ¦--Apple i5-7Y54             NA
+9   ¦   ¦--Apple m5Y51               NA
+10  ¦   ¦--Apple i5-726U             NA
+11  ¦   ¦--Apple i5-6267U            NA
+12  ¦   °--Apple i5-7267U3           NA
+13  ¦--Jakosc                        NA
+14  ¦   ¦--Apple i5-5360U            NA
+15  ¦   ¦--Apple i5-7360U            NA
+16  ¦   ¦--Apple M-series77Y32       NA
+17  ¦   ¦--Apple i5-7267U            NA
+18  ¦   ¦--Apple i5-7267U2           NA
+19  ¦   ¦--Apple i5-7Y54             NA
+20  ¦   ¦--Apple m5Y51               NA
+21  ¦   ¦--Apple i5-726U             NA
+22  ¦   ¦--Apple i5-6267U            NA
+23  ¦   °--Apple i5-7267U3           NA
+24  ¦--Styl                          NA
+25  ¦   ¦--Apple i5-5360U            NA
+26  ¦   ¦--Apple i5-7360U            NA
+27  ¦   ¦--Apple M-series77Y32       NA
+28  ¦   ¦--Apple i5-7267U            NA
+29  ¦   ¦--Apple i5-7267U2           NA
+30  ¦   ¦--Apple i5-7Y54             NA
+31  ¦   ¦--Apple m5Y51               NA
+32  ¦   ¦--Apple i5-726U             NA
+33  ¦   ¦--Apple i5-6267U            NA
+34  ¦   °--Apple i5-7267U3           NA
+35  °--Cena                          NA
+36      ¦--Apple i5-5360U            NA
+37      ¦--Apple i5-7360U            NA
+38      ¦--Apple M-series77Y32       NA
+39      ¦--Apple i5-7267U            NA
+40      ¦--Apple i5-7267U2           NA
+41      ¦--Apple i5-7Y54             NA
+42      ¦--Apple m5Y51               NA
+43      ¦--Apple i5-726U             NA
+44      ¦--Apple i5-6267U            NA
+45      °--Apple i5-7267U3           NA
+> Visualize(laptopyAhp)
+> Analyze(laptopyAhp)
+                Weight Apple i5-7267U3 Apple i5-6267U Apple i5-7267U Apple i5-7267U2 Apple m5Y51 Apple i5-7Y54 Apple i5-726U
+1 Zakup laptopa 100.0%           11.6%          10.3%          10.2%           10.2%       10.0%          9.9%          9.5%
+2  ¦--Wydajnosc  32.5%            4.2%           3.1%           3.1%            3.1%        3.1%          3.1%          3.1%
+3  ¦--Cena       29.1%            3.4%           3.2%           3.1%            3.1%        2.9%          2.8%          2.9%
+4  ¦--Styl       22.7%            2.2%           2.2%           2.3%            2.3%        2.2%          2.2%          2.2%
+5  °--Jakosc     15.6%            1.7%           1.7%           1.7%            1.7%        1.7%          1.7%          1.2%
+  Apple i5-5360U Apple i5-7360U Apple M-series77Y32 Inconsistency
+1           9.5%           9.5%                9.3%          8.9%
+2           3.1%           3.1%                3.1%          0.0%
+3           2.6%           2.6%                2.6%          0.0%
+4           2.3%           2.3%                2.3%          0.0%
+5           1.4%           1.4%                1.2%          0.0%
+> AnalyzeTable(laptopyAhp)
+> AnalyzeTable(laptopyAhp, decisionMaker = "Ojciec")
+> AnalyzeTable(laptopyAhp, decisionMaker = "Matka")
+> AnalyzeTable(laptopyAhp, decisionMaker = "Dziecko")
+> 

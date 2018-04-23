@@ -1,0 +1,12 @@
+#library(ahp)
+ahpFile <- system.file("extdata/custom", "laptopy.ahp", package="ahp")
+ahpFile <- "C:/Users/Izuś/Desktop/jezyk R/lab4/lab4/laptopy1.ahp"
+laptopyAhp <- Load(ahpFile)
+Calculate(laptopyAhp)
+print(laptopyAhp, priority = function(x) x$sparent$priority["total", x$name])
+Visualize(laptopyAhp)
+Analyze(laptopyAhp)
+AnalyzeTable(laptopyAhp)
+AnalyzeTable(laptopyAhp, decisionMaker = "Ojciec")
+AnalyzeTable(laptopyAhp, decisionMaker = "Matka")
+AnalyzeTable(laptopyAhp, decisionMaker = "Dziecko")

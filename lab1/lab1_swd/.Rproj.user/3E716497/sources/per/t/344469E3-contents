@@ -1,0 +1,51 @@
+library("MCDA")
+
+rm(list = ls())
+# ----------------------------------------
+epsilon <- 0.01
+
+additiveValueFunctionElicitation
+
+# the numeric data table
+# pixele, ram, dysk, cena
+numericDataTable <- rbind(
+  c(1440.900, 8, 128, 3699),
+  c(2560.1600, 8, 128, 5699),
+  c(2304.1440, 8, 256, 5899),
+  c(2560.1600, 8, 512, 8999),
+  c(2560.1600, 8, 512, 8999),
+  c(2034.1440, 8, 512, 7199),
+  c(2304.1440, 8, 512, 7999),
+  c(2560.1600, 8, 256, 7999),
+  c(2560.1600, 8, 512, 9599),
+  c(2560.1600, 16, 10599)
+)
+rownames(numericDataTable) <- c(
+  "i5-5360U",
+  "i5-7360U",
+  "M-series77Y32",
+  "i5-7267U",
+  "i5-7267U2",
+  "i5-7Y54",
+  "m5Y51",
+  "i5-726U",
+  "i5-6267U",
+  "i5-7267U3")
+colnames(numericDataTable) <- c(
+  "Ekran",
+  "RAM",
+  "Dysk",
+  "Cena")
+
+# ranks of the alternatives
+alternativesRanks <- c(1,2,3,4,5,6,7,8,9,10)
+names(alternativesRanks) <- row.names(numericDataTable)
+
+# criteria to minimise or maximize
+criteriaMinMax <- c("max","max","max","min")
+names(criteriaMinMax) <- colnames(numericDataTable)
+x <- additiveValueFunctionElicitation(numericDataTable,
+                                      criteriaMinMax, epsilon,
+                                      alternativesRanks = alternativesRanks)
+
+print(x)

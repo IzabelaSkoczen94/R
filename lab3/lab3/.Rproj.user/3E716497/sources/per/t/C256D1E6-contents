@@ -1,0 +1,90 @@
+Version: 2.0
+
+Alternatives: &alternatives
+  Apple i5-5360U:
+    screen: 13.3
+    memory RAM: 8
+    disc: 128
+    cost: 3699
+  Apple i5-7360U:
+    screen: 13.3
+    memory RAM: 8
+    disc: 128
+    cost: 5699
+  Apple M-series77Y32:
+    screen: 13.3
+    memory RAM: 8
+    disc: 256
+    cost: 5899
+  Apple i5-7267U:
+    screen: 13.3
+    memory RAM: 8
+    disc: 512
+    cost: 8999
+  Apple i5-7267U2:
+    screen: 13.3
+    memory RAM: 8
+    disc: 512
+    cost: 8999
+  Apple i5-7Y54:
+    screen: 12.1
+    memory RAM: 8
+    disc: 512
+    cost: 7199
+  Apple m5Y51:
+    screen: 12.1
+    memory RAM: 8
+    disc: 512
+    cost: 7999
+  Apple i5-726U:
+    screen: 12.1
+    memory RAM: 8
+    disc: 256
+    cost: 7999
+  Apple i5-6267U:
+    screen: 12.1
+    memory RAM: 8
+    disc: 512
+    cost: 9699
+  Apple i5-7267U3:
+    screen: 12.1
+    memory RAM: 16
+    disc: 512
+    cost: 10599
+    
+# End of Alternatives Section
+#####################################################
+Goal:
+  name: Buy Laptopy
+  preferences:
+    pairwise:
+      - [Cost, Quality, 3]
+      - [Cost, Style, 3]
+      - [Cost, Productivity, 1]
+      - [Quality, Style, 9]
+      - [Quality, Productivity, 5]
+      - [Style, Productivity, 1/7]
+  children: 
+    Cost:
+      preferences:
+          pairwiseFunction: 
+            function(a1, a2) min(9, max(1/9, a2$cost/a1$cost))
+      children: *alternatives 
+    Quality: 
+      preferences:
+          pairwiseFunction: 
+            function(a1, a2) min(9, max(1/9, a1$memory/a2$memory))
+      children: *alternatives
+    Productivity:
+      preferences:
+          scoreFunction:
+            function(a) a$disc/2.5
+      children: *alternatives
+    Style:
+      preferences:
+          scoreFunction:
+            function(a) a$screen/2.5
+      children: *alternatives
+#
+# End of Goal Section
+###################################
